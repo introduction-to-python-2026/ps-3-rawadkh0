@@ -1,22 +1,19 @@
 def move(my_list, direction):
-    # Make a copy so we don't modify the original list
-    new_list = my_list.copy()
+    # מצא את המיקום של ה־1
+    i = my_list.index(1)
 
-    # Find the index of the 1
-    index_of_one = new_list.index(1)
+    if direction == 'right':
+        # זזים ימינה רק אם לא בקצה הימני
+        if i < len(my_list) - 1:
+            my_list[i] = 0
+            my_list[i + 1] = 1
 
-    # Move right
-    if direction == "right":
-        if index_of_one == len(new_list) - 1:
-            return new_list      # at right edge, do nothing
-        new_list[index_of_one] = 0
-        new_list[index_of_one + 1] = 1
+    elif direction == 'left':
+        # זזים שמאלה רק אם לא בקצה השמאלי
+        if i > 0:
+            my_list[i] = 0
+            my_list[i - 1] = 1
 
-    # Move left
-    elif direction == "left":
-        if index_of_one == 0:
-            return new_list      # at left edge, do nothing
-        new_list[index_of_one] = 0
-        new_list[index_of_one - 1] = 1
+    # אם היינו בקצה – נשארים במקום
+    return my_list
 
-    return new_list
